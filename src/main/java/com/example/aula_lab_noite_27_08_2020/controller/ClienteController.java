@@ -14,6 +14,9 @@ public class ClienteController {
 
     @GetMapping("/cliente/{codigo}")
     public String getCliente1(@PathVariable int codigo){
-        return "Vai algum dia retornar um cliente" + codigo;
+        if (codigo > 0)
+            return "Vai algum dia retornar um cliente" + codigo;
+        else
+            return "Erro, codigo negativo" + codigo;
     }
 }
