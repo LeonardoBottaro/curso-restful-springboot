@@ -17,21 +17,21 @@ public class ClienteController {
 
     @PostConstruct
     public void criarClientes(){
-        final Cliente c1 = new Cliente();
-        final Cliente c2 = new Cliente();
-        final Cliente c3 = new Cliente();
+        Cliente c1 = new Cliente();
+        Cliente c2 = new Cliente();
+        Cliente c3 = new Cliente();
 
         c1.codigo = 1;
         c1.nome = "Jose";
         c1.endereco = "Rua X,99";
         c1.saldo = 100;
 
-        c2.codigo = 1;
+        c2.codigo = 2;
         c2.nome = "Maria";
         c2.endereco = "Rua Y,123";
         c2.saldo = 200;
 
-        c3.codigo = 1;
+        c3.codigo = 3;
         c3.nome = "Fernanda";
         c3.endereco = "Rua Q,25";
         c3.saldo = 400;
