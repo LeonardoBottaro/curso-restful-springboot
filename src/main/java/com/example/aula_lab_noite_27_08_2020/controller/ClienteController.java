@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ClienteController {
     
-    @GetMapping("/cliente")
+    @GetMapping("/clientes")
     public String getClientes(){
         return "Vai algum dia retornar do BD TODOS os clientes!";
     }
 
-    @GetMapping("/cliente/{codigo}")
+    @GetMapping("/clientes/{codigo}")
     public String getCliente1(@PathVariable int codigo){
         if (codigo > 0)
             return "Vai algum dia retornar um cliente" + codigo;
