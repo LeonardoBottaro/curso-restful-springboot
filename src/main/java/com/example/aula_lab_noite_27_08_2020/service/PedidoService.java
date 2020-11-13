@@ -1,9 +1,11 @@
 package com.example.aula_lab_noite_27_08_2020.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.aula_lab_noite_27_08_2020.dto.PedidoDTO;
 import com.example.aula_lab_noite_27_08_2020.model.Cliente;
 import com.example.aula_lab_noite_27_08_2020.model.Pedido;
 import com.example.aula_lab_noite_27_08_2020.repository.PedidoRepository;
@@ -21,6 +23,26 @@ public class PedidoService {
 
     @Autowired
     private ClienteService clienteService;
+
+    public PedidoDTO toDTO(Pedido pedido){
+        PedidoDTO dto = new PedidoDTO();
+        dto.setDataPedido(pedido.getDataPedido());
+        dto.setDescricao(pedido.getDescricao());
+        dto.setItens(pedido.getItens());
+        dto.setNumero(pedido.getNumero());
+        dto.setPedidoFechado(pedido.isPedidoFechado());
+        dto.setTotalPedido(pedido.totalPedido());
+        return dto;
+    }
+
+    public List<PedidoDTO> toListDTO(List<Pedido> pedidos){
+        ArrayList<PedidoDTO> dtoList = new ArrayList<PedidoDTO>();
+
+        for(Pedido pedido : pedidos){
+            dtoList.add(toDTO(pedido));
+        }
+        return dtoList;
+    }
 
     public List<Pedido> getAllPedidos(){
         return repositorio.getAllPedidos();

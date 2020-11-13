@@ -3,6 +3,7 @@ package com.example.aula_lab_noite_27_08_2020.controller;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import com.example.aula_lab_noite_27_08_2020.dto.ClienteDTO;
+import com.example.aula_lab_noite_27_08_2020.dto.PedidoDTO;
 import com.example.aula_lab_noite_27_08_2020.model.Cliente;
 import com.example.aula_lab_noite_27_08_2020.model.Pedido;
 import com.example.aula_lab_noite_27_08_2020.service.ClienteService;
@@ -72,5 +73,12 @@ public class ClienteController {
         pedido = pedidoService.salvar(pedido, id);
         UriComponents uriComponents = builder.path(request.getRequestURI() + "/" + pedido.getNumero()).build();
         return ResponseEntity.created(uriComponents.toUri()).build(); 
+    }
+
+    @GetMapping("{id}/pedidos")
+    public List<PedidoDTO> getPedidosCliente(@PathVariable int id){
+
+        Cliente cliente = clienteService.getClienteByCodigo(id);
+        return pedidoService.toListDTO(cliente.getPedidos());
     }
 }
