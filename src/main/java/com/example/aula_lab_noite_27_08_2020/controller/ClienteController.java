@@ -2,6 +2,8 @@ package com.example.aula_lab_noite_27_08_2020.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import com.example.aula_lab_noite_27_08_2020.dto.ClienteDTO;
 import com.example.aula_lab_noite_27_08_2020.dto.PedidoDTO;
 import com.example.aula_lab_noite_27_08_2020.model.Cliente;
@@ -45,7 +47,7 @@ public class ClienteController {
     }
 
     @PostMapping()
-    public ResponseEntity<Void> salvar(@RequestBody ClienteDTO clienteDTO, HttpServletRequest request, UriComponentsBuilder builder){
+    public ResponseEntity<Void> salvar(@Valid @RequestBody ClienteDTO clienteDTO, HttpServletRequest request, UriComponentsBuilder builder){
         Cliente cliente = clienteService.fromDTO(clienteDTO);
 
         cliente = clienteService.save(cliente);
